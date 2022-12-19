@@ -5,9 +5,9 @@ public class Carta {
 	private int id_jugador;
 	private Color[] colores = Color.values();
 	private Numero[] numeros = Numero.values();
-	private Color color = colores[(int) (Math.random()*colores.length-1)];
-	private Numero numero = numeros[(int) (Math.random()*numeros.length-1)];
-
+	private Color color;
+	private Numero numero;
+	
 	public enum Color {
 		ROJO, AMARILLO, VERDE, AZUL, NEGRO
 	};
@@ -22,11 +22,11 @@ public class Carta {
 	
 	
 
-	public Carta(int id, int id_jugador, Color color, Numero numero) {
+	public Carta(int id, int id_jugador) {
 		this.id = id;
 		this.id_jugador = id_jugador;
-		this.color = color;
-		this.numero = numero;
+		color = colores[(int) (Math.random()*colores.length)];
+		numero = numeros[(int) (Math.random()*numeros.length)];
 	}
 
 
@@ -69,7 +69,16 @@ public class Carta {
 
 	public void setNumero(Numero numero) {
 		this.numero = numero;
-	};
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Carta [id=" + id + ", id_jugador=" + id_jugador + ", color=" + color + ", numero=" + numero + "]";
+	}
+	
+	
 
 	
 }
