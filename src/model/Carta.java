@@ -5,29 +5,37 @@ public class Carta {
 	private int id_jugador;
 	private Color[] colores = Color.values();
 	private Numero[] numeros = Numero.values();
-	private Color color;
 	private Numero numero;
+	private Color color;
+	
 	
 	public enum Color {
 		ROJO, AMARILLO, VERDE, AZUL, NEGRO
 	};
 
 	public enum Numero {
-		CERO, UNO, DOS, TRES, CUATRO, CINCO, SEIS, SIETE, OCHO, NUEVE, CAMBIO, MASDOS, SALTO, CAMBIOCOLOR, MASCUATRO
+		CERO, UNO, DOS, TRES, CUATRO, CINCO, SEIS, SIETE, OCHO, NUEVE, CAMBIO, MASDOS, SALTO, CAMBIOCOL, MASCUATRO
 	}
 
-	public Carta() {
-		
-	}
-	
-	
+
 
 	public Carta(int id, int id_jugador) {
 		this.id = id;
 		this.id_jugador = id_jugador;
-		color = colores[(int) (Math.random()*colores.length)];
 		numero = numeros[(int) (Math.random()*numeros.length)];
+		color = colores[(int) (Math.random()*colores.length)];
 	}
+	
+
+
+	public Carta(int id, int id_jugador, Numero numero, Color color) {
+		this.id = id;
+		this.id_jugador = id_jugador;
+		this.numero = numero;
+		this.color = color;
+	}
+
+
 
 
 

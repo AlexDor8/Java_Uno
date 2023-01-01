@@ -82,4 +82,13 @@ public class Jugador {
 	public void setGanadas(int ganadas) {
 		this.ganadas = ganadas;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Jugador [id=" + id + ", usuario=" + usuario + ", password=" + password + ", nombre=" + nombre
+				+ ", partidas=" + partidas + ", ganadas=" + ganadas + "]";
+	}
+	
+	
 }
