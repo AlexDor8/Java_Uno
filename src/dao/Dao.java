@@ -26,6 +26,7 @@ public class Dao {
 	public static final String INSERT_PARTIDA = "INSERT INTO PARTIDA (id_carta) VALUES (?)";
 	public static final String DELETE_CARTA = "DELETE FROM CARTA where id = ?";
 	public static final String DELETE_CARTA_PARTIDA = "DELETE FROM PARTIDA where id_carta = ?";
+	public static final String DELETE_ALL_CARTA = "DELETE FROM CARTA where id_jugador = ?";
 	
 	private Connection conexion;
 
@@ -107,6 +108,13 @@ public class Dao {
 	public void eliminarCartaPartida(Carta carta) throws SQLException {
 		try (PreparedStatement ps = conexion.prepareStatement(DELETE_CARTA)) {
 			ps.setInt(1, carta.getId());
+			ps.execute();
+		}
+	}
+	
+	public void eliminarTodasCartasJugador(int id_jugador) throws SQLException {
+		try (PreparedStatement ps = conexion.prepareStatement(DELETE_ALL_CARTA)) {
+			ps.setInt(1, id_jugador);
 			ps.execute();
 		}
 	}
