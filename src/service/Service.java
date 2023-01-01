@@ -29,6 +29,8 @@ public class Service {
 		Jugador jugador = new Jugador(0, usuario, contraseña, nombre, 0, 0);
 		dao.insertarJugador(jugador);
 		dao.desconectar();
+		
+		login();
 	}
 
 	public void login() throws SQLException {
@@ -70,30 +72,31 @@ public class Service {
 			}
 		}
 		System.out.println("HA EMPEZADO LA PARTIDA");
-		while (!cartas.isEmpty()) {
+		do {
 			int carta_aleatoria_mazo = (int) (Math.random() * cartas.size());
 			Carta carta = cartas.get(carta_aleatoria_mazo);
 			dao.insertarCartaPartida(carta);
 			System.out.println("Has utilizado la " + carta);
 			if (carta.getNumero().equals(Numero.MASDOS)) {
 				for (int i = 0; i < 2; i++) {
-					Carta nuevaCarta = new Carta(0, id_jugador);
-					System.out.println("Has robado la " + nuevaCarta);
+					Carta nuevaCarta = new Carta(0,id_jugador);
 					dao.insertarCarta(nuevaCarta);
+					System.out.println("Has robado la " + nuevaCarta);
 				}
 			} else if (carta.getNumero().equals(Numero.MASCUATRO)) {
 				for (int i = 0; i < 4; i++) {
 					Carta nuevaCarta = new Carta(0, id_jugador);
-					System.out.println("Has robado la " + nuevaCarta);
 					dao.insertarCarta(nuevaCarta);
+					System.out.println("Has robado la " + nuevaCarta);
 				}
 			} else if (carta.getNumero().equals(Numero.SALTO) || carta.getNumero().equals(Numero.CAMBIO)) {
 				dao.eliminarCartaPartida(carta);
+				dao.eliminarCarta(carta);
 				break;
 			}
 			dao.eliminarCarta(carta);
-		}
-
+		}while(cartas!=null);
+		
 		dao.desconectar();
 	}
 }

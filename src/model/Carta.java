@@ -26,7 +26,7 @@ public class Carta {
 		color = colores[(int) (Math.random()*colores.length)];
 	}
 	
-
+	
 
 	public Carta(int id, int id_jugador, Numero numero, Color color) {
 		this.id = id;
