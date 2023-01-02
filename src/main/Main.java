@@ -10,7 +10,7 @@ public class Main {
 	public static void main(String[] args) {
 		inicio();
 	}
-	
+
 	public static void inicio() {
 		Service service = new Service();
 		Scanner entrada = new Scanner(System.in);
@@ -19,7 +19,11 @@ public class Main {
 		System.out.println("1. Login");
 		System.out.println("2. Registro");
 		int accion = entrada.nextInt();
-		switch(accion) {
+		/*
+		 * Dependiendo del nomero que introduzca el usuario, entramos en el login o el
+		 * registro
+		 */
+		switch (accion) {
 		case 1:
 			try {
 				service.login();
@@ -30,7 +34,7 @@ public class Main {
 		case 2:
 			try {
 				service.registrar();
-			}catch (SQLException e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
