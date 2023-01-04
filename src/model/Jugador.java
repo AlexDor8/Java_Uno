@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Jugador {
 	private int id;
 	private String usuario;
@@ -7,6 +9,7 @@ public class Jugador {
 	private String nombre;
 	private int partidas;
 	private int ganadas;
+	private ArrayList<Carta> cartas = new ArrayList<Carta>();
 	
 	
 	public Jugador(int id, String usuario, String password, String nombre, int partidas, int ganadas) {
@@ -81,6 +84,17 @@ public class Jugador {
 
 	public void setGanadas(int ganadas) {
 		this.ganadas = ganadas;
+	}
+
+	
+
+	public ArrayList<Carta> getCartas() {
+		return cartas;
+	}
+
+
+	public void setCartas(ArrayList<Carta> cartas) {
+		this.cartas = cartas;
 	}
 
 

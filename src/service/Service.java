@@ -132,6 +132,7 @@ public class Service {
 					System.out.println("Has robado la " + nuevaCarta);
 					dao.eliminarCarta(carta);
 				}
+				cartas = dao.todasCartasPorJugador(id_jugador);
 				/*
 				 * En el caso de que salga un MASCUATRO, robamos cuatro cartas (insertamos
 				 * cuatro cartas en la tabla carta. Eliminamos esa carta que hemos jugado de la
@@ -144,7 +145,9 @@ public class Service {
 					dao.insertarCarta(nuevaCarta);
 					System.out.println("Has robado la " + nuevaCarta);
 					dao.eliminarCarta(carta);
+					
 				}
+				cartas = dao.todasCartasPorJugador(id_jugador);
 				/*
 				 * En el caso de que salga SALTO O CAMBIO, acabamos el programa. Eleminamos esa
 				 * carta de la tabla partida y carta
@@ -153,6 +156,7 @@ public class Service {
 				System.out.println("Has utilizado la " + carta);
 				dao.eliminarCartaPartida(carta);
 				dao.eliminarCarta(carta);
+				cartas = dao.todasCartasPorJugador(id_jugador);
 				break;
 				/*
 				 * En el caso de que no salga una de las opciones anteriores, es decir, el resto
@@ -162,6 +166,7 @@ public class Service {
 			} else {
 				System.out.println("Has utilizado la " + carta);
 				dao.eliminarCarta(carta);
+				cartas = dao.todasCartasPorJugador(id_jugador);
 			}
 
 			ArrayList<Carta> cartas1 = dao.todasCartasPorJugador(id_jugador);
